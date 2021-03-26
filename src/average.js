@@ -14,7 +14,7 @@
 
 const average = (arr) => {
   if (arr.length === 0 || arr === []) {
-    return undefined 
+    return undefined;
   }  
   let sum = 0;
   for (let index = 0; index < arr.length; index += 1) {
@@ -24,7 +24,7 @@ const average = (arr) => {
     }
     sum += arr[index];
   }
-  return Math.round(sum/arr.length)
+  return Math.round(sum/arr.length);
 };
 
 module.exports = average;
