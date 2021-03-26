@@ -13,7 +13,11 @@
 */
 
 const average = (arr) => {
-  if (arr === [] || arr !== number) { return undefined}
+  if (arr === [] || arr !== number) { return undefined }
+  return 'teste';
+
+
+
   
 };
 
