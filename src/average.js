@@ -12,6 +12,9 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+const average = (arr) => {
+  if (arr === [] || arr !== number) { return undefined}
+  
+};
 
 module.exports = average;
