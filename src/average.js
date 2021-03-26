@@ -12,6 +12,7 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
+
 const average = (arr) => {
   // condição
   if (arr.length === 0 ) {
@@ -30,5 +31,6 @@ const average = (arr) => {
   // media
   return Math.round(sum / arr.length);
 };
+
 
 module.exports = average;
