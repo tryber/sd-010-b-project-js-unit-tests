@@ -22,12 +22,13 @@ const average = (arr) => {
       return undefined
     }
   }
-
+  let avg = 0
   for (let i = 0; i < arr.length; i += 1) {
-    if (typeof arr[i] !== 'number') {
-      return undefined
-    }
+    avg += arr[i];
   }
+  
+  return parseInt(avg/arr.length)
+
 };
 
 module.exports = average;
