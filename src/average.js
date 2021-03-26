@@ -13,12 +13,16 @@
 */
 
 const average = (arr) => {
-  if (arr === [] || arr !== number) { return undefined }
+  if (arr.length === 0) { 
+    return undefined 
+  }
+  for (let i = 0; i < arr.length; i += 1) {
+    if (typeof arr[i] !== 'number') {
+      return undefined
+    }
+  }
+
   return 'teste';
-
-
-
-  
 };
 
 module.exports = average;
