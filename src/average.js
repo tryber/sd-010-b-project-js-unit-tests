@@ -27,7 +27,7 @@ const average = (arr) => {
     avg += arr[i];
   }
   
-  return parseInt(avg/arr.length)
+  return Math.round(avg/arr.length)
 
 };
 
