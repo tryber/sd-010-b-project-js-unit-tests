@@ -39,4 +39,7 @@ const productDetails = (firstProduct, secondProduct) => [
   },
 ];
 
+// const object1 = productDetails('Alcool Gel', 'Mascara')[0]
+// const object2 = productDetails('Alcool Gel', 'Mascara')[0]
+// console.log(object1 === object2)
 module.exports = productDetails;

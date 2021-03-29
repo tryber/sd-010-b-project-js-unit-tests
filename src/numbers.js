@@ -18,4 +18,6 @@ const numbers = (myArray) => {
   return true;
 };
 
+// console.log(numbers([3, 4, 6, 7]))
+
 module.exports = numbers;
