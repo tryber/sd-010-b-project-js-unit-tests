@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+// eslint-disable max-len
 
 /*
   Você é responsável por escrever o código do sistema de pedidos de um restaurante. Deve ser possível, através desse sistema,
