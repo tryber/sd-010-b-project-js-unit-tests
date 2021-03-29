@@ -29,3 +29,5 @@ const circle = (radius) => {
 };
 
 module.exports = circle;
+
+// exercicio realizado em conjunto com Paulo Xavier

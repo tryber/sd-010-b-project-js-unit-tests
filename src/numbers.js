@@ -18,4 +18,4 @@ const numbers = (myArray) => {
   return true;
 };
 
-module.exports = numbers;
+module.exports = numbers;// exercicio realizado em conjunto com Paulo Xavier
