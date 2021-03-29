@@ -20,7 +20,6 @@ const vqv = require('../src/vqv.js');
 
   OBS: Lembre-se que você não precisa se preocupar com o describe e o it por enquanto, isso será aprendido posteriormente.
 */
-
 const workMessage = 'trabalho na Trybe e mando muito em programação!\n';
 
 describe('#vqv', () => {
