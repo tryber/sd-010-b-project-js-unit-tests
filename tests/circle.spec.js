@@ -23,9 +23,18 @@ const circle = require('../src/circle');
   OBS: Lembre-se que você não precisa se preocupar com o describe e o it por enquanto, isso será aprendido posteriormente.
 */
 
+// eslint-disable-next-line max-lines-per-function
 describe('#circle', () => {
   it('given a radius, should return an object with circles info', () => {
-    assert.fail();
+    assert.strictEqual(circle(), undefined);
+
+    let value = circle(3);
+    value.area = parseFloat(value.area).toPrecision(4) * 1;
+
+    assert.deepStrictEqual(circle(1), { radius: 1, area: 3.14, circumference: 6.28 });
+    assert.deepStrictEqual(circle(7), { radius: 7, area: 153.86, circumference: 43.96 });
+
+    // assert.fail();
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste se circle retorna um objeto.
     // Teste se o objeto retornado tem 3 entradas.
