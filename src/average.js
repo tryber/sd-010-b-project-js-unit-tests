@@ -11,7 +11,36 @@
     - average([1, 1]) // Retorno: 1;
     - average([1, '2']) // Retorno: undefined;
 */
+function some(array) {
+  let soma = null;
+  array.forEach((e) => {
+    soma += e;
+  });
+  return soma;
+}
 
-const average = () => {};
+function hasString(array) {
+  let exist = null;
+  array.forEach((e) => {
+    if (typeof e === 'string') exist = true;
+  });
+  return exist;
+}
+
+function hasZero(array) {
+  let exist = null;
+  array.forEach((e) => {
+    if (e === 0) exist = true;
+  });
+  return exist;
+}
+
+const average = (array) => {
+  let soma = some(array);
+  if (array.length === 0 || hasString(array)) return undefined;
+  if (hasZero(array)) return 0;
+
+  return Math.round(soma / (array.length));
+};
 
 module.exports = average;
