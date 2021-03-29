@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable max-lines-per-function */
-
 const assert = require('assert');
 const vqv = require('../src/vqv.js');
 
