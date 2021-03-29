@@ -47,6 +47,7 @@
 
 // PASSO 1: Crie uma função `createMenu()` que, dado um objeto passado por parâmetro, retorna um objeto com o seguinte formato: { fetchMenu: () => objetoPassadoPorParametro }.
 //
+
 // Agora faça o TESTE 4 no arquivo `tests/restaurant.spec.js`.
 
 //------------------------------------------------------------------------------------------
@@ -79,6 +80,48 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// const addFood = (orderFood) => {
+//   const items = Object.keys(orderFood.food);
+//   const keys = Object.keys(items);
+//   keys.forEach((key) => {
+//     orderFromMenu(items[key]);
+//   });
+// }
+
+const restaurant = {};
+
+const orderFromMenu = (request) => {
+  restaurant.consumption.push(request);
+
+  return restaurant.consumption;
+};
+
+// https://stackoverflow.com/questions/29885220/using-objects-in-for-of-loops
+// https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+const pay = (consumption) => {
+  let toPay = 0;
+  const addition = 0.1;
+
+  Object.keys(restaurant.fetchMenu()).forEach((key) => {
+    for (let value of consumption) {
+      if (restaurant.fetchMenu()[key][value]) {
+        toPay += Number(restaurant.fetchMenu()[key][value]);
+      }
+    }
+  });
+
+  toPay += addition * toPay;
+
+  return toPay;
+};
+
+const createMenu = (myMenu) => {
+  restaurant.fetchMenu = () => myMenu;
+  restaurant.consumption = [];
+  restaurant.order = (request) => orderFromMenu(request);
+  restaurant.pay = () => pay(restaurant.consumption);
+
+  return restaurant;
+};
 
 module.exports = createMenu;
