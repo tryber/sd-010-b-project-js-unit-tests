@@ -21,4 +21,24 @@
 
 const calculator = {};
 
+calculator.add = (num1, num2) => {
+  let soma = num1 + num2;
+  return soma;
+};
+
+calculator.mult = (num1, num2) => {
+  let multi = num1 * num2;
+  return multi;
+};
+
+calculator.div = (num1, num2) => {
+  let divi = num1 / num2;
+  return Math.trunc(divi);
+};
+
+calculator.sub = (num1, num2) => {
+  let subt = num1 - num2;
+  return subt;
+};
+
 module.exports = calculator;
