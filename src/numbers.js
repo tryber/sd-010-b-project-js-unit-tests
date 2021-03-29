@@ -19,3 +19,5 @@ const numbers = (myArray) => {
 };
 
 module.exports = numbers;
+
+// Exercício realizado em parceria com Wellington Passo

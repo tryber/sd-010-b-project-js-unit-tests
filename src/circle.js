@@ -27,5 +27,6 @@ const circle = (radius) => {
     circumference: 2 * PI * radius,
   };
 };
-
 module.exports = circle;
+
+// Exercício realizado em parceria com Wellington Passo
