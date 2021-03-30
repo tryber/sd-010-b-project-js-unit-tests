@@ -31,9 +31,7 @@ describe('#average', () => {
     assert.strictEqual(average([' ']), undefined);
     assert.strictEqual(average(['um', 'dois', 'tres']), undefined);
     assert.strictEqual(average([47, 63, 122]), 77);
-
     assert.strictEqual(average([-11, 2, 5]), -1);
-
     assert.strictEqual(average([-11, -5, 2]), -5);
   });
 });
