@@ -19,6 +19,11 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
-
+const calculator = {
+  add: (num1, num2) => Math.floor(num1 + num2),
+  mult: (num1, num2) => Math.floor(num1 * num2),
+  div: (num1, num2) => Math.floor(num1 / num2),
+  sub: (num1, num2) => Math.floor(num1 - num2),
+};
+// Fonte: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
 module.exports = calculator;
