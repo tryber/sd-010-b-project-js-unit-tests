@@ -18,7 +18,16 @@
   calculator.add(1, 1) // Retorno: 2;
   calculator.div(3, 2) // Retorno: 1;
 */
+const addic = (num1, num2) => Math.trunc(num1 + num2);
+const multi = (num1, num2) => Math.trunc(num1 * num2);
+const subt = (num1, num2) => Math.trunc(num1 - num2);
+const divi = (num1, num2) => Math.trunc(num1 / num2);
 
-const calculator = {};
+const calculator = {
+  add: addic,
+  mult: multi,
+  div: divi,
+  sub: subt,
+};
 
 module.exports = calculator;
