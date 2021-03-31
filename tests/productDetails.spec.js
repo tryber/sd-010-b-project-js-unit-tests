@@ -31,14 +31,30 @@ const productDetails = require('../src/productDetails');
   OBS: Lembre-se que você não precisa se preocupar com o describe e o it por enquanto, isso será aprendido posteriormente.
 */
 
+const catch123 = (array) => {
+  for (let arr in array) {
+    if ((array[arr].details.productId.substring(array[arr].details.productId.length - 3)
+     !== '123')) {
+      return false;
+    }
+  }
+  return true;
+};
+
 describe('#productDetails', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
+    const resultProductDet = productDetails('Alcool gel', 'Máscara');
+    // assert.fail();
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste que o retorno da função é um array.
+    assert.strictEqual(Array.isArray(resultProductDet), true);
     // Teste que o array retornado pela função contém dois itens dentro.
+    assert.strictEqual(resultProductDet.length, 2);
     // Teste que os dois itens dentro do array retornado pela função são objetos.
+    assert.strictEqual(typeof resultProductDet, 'object');
     // Teste que os dois objetos são diferentes entre si.
+    assert.notDeepStrictEqual(resultProductDet[0], resultProductDet[1]);
     // (Difícil) Teste que os dois productIds terminam com 123.
+    assert.strictEqual(catch123(resultProductDet), true);
   });
 });
