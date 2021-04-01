@@ -79,6 +79,60 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+const restaurant = {};
 
+const orderFromMenu = (request) => restaurant.consumption.push(request);
+
+// https://www.tutorialspoint.com/recursively-list-nested-object-keys-javascript
+const recursiveSearch = (obj, results = {}) => {
+  const r = results;
+  Object.keys(obj).forEach((key) => {
+    const value = obj[key];
+    if (typeof value !== 'object') {
+      r[key] = value;
+    } else if (typeof value === 'object') {
+      recursiveSearch(value, r);
+    }
+  });
+  return r;
+};
+
+const createMenu = (myMenu) => {
+  restaurant.fetchMenu = () => myMenu;
+  restaurant.consumption = [];
+  restaurant.order = (menuItem) => orderFromMenu(menuItem);
+  restaurant.pay = () => {
+    let sum = 0;
+    let prices = recursiveSearch(myMenu);
+    for (let index = 0; index < restaurant.consumption.length; index += 1) {
+      let key = restaurant.consumption[index];
+      sum += prices[key];
+      console.log(sum);
+    }
+    return sum;
+  };
+  return restaurant;
+};
+
+// https://www.tutorialspoint.com/recursively-list-nested-object-keys-javascript
+// const recursiveSearch = (obj, searchKey, results = []) => {
+//   const r = results;
+//   Object.keys(obj).forEach((key) => {
+//     const value = obj[key];
+//     if (key === searchKey && typeof value !== 'object') {
+//       r.push(value);
+//     } else if (typeof value === 'object') {
+//       recursiveSearch(value, searchKey, r);
+//     }
+//   });
+//   return r;
+// };
+
+const o = { food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } };
+const objetoRetornado = createMenu(o);
+objetoRetornado.order('coxinha');
+console.log(objetoRetornado.order('cerveja'));
+console.log(objetoRetornado.fetchMenu());
+restaurant.pay();
+console.log(objetoRetornado);
 module.exports = createMenu;
