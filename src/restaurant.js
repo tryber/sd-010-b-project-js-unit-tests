@@ -79,6 +79,56 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// Objeto restaurant vazio, que vai ser retornado no createMenu
+let restaurant = {};
+
+// adiciona o request (order) ao consumption
+const orderFromMenu = (request) => restaurant.consumption.push(request);
+
+// Funções que compara o nome no pedido com o do menu e retorna a soma do valor
+const compareFood = (mainOrder, produto, order) => {
+  let sumFood = 0;
+  if (produto === order) {
+    sumFood += mainOrder.food[produto];
+  }
+  return sumFood;
+};
+
+const compareDrink = (mainOrder, produto, order) => {
+  let sumDrink = 0;
+  if (produto === order) {
+    sumDrink += mainOrder.drink[produto];
+  }
+  return sumDrink;
+};
+
+const sum = (mainOrder) => {
+  let sumFood = 0;
+  let sumDrink = 0;
+  let nameFood = Object.keys(mainOrder.food);
+  let nameDrink = Object.keys(mainOrder.drink);
+  // vai varrer o array que tem os pedidos
+  for (let i = 0; i < restaurant.consumption.length; i += 1) {
+    // vai varrer o array food
+    for (let f = 0; f < nameFood.length; f += 1) {
+      sumFood += compareFood(mainOrder, restaurant.consumption[i], nameFood[f]);
+    }
+    // vai varrer o array drinks
+    for (let d = 0; d < nameDrink.length; d += 1) {
+      sumDrink += compareDrink(mainOrder, restaurant.consumption[i], nameDrink[d]);
+    }
+  }
+  return 1.10 * (sumFood + sumDrink);
+};
+
+const createMenu = (mainOrder) => {
+  restaurant = {
+    fetchMenu: () => mainOrder,
+    consumption: [],
+    order: (request) => orderFromMenu(request),
+    pay: () => sum(mainOrder),
+  };
+  return restaurant;
+};
 
 module.exports = createMenu;
