@@ -79,6 +79,46 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// Parâmetros:
+//   - Um objeto. Exemplos: { food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} }.
+//   Comportamento:
+
+//   const meuRestaurante = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} }).
+
+//   meuRestaurante.fetchMenu() // Retorno: { food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} }
+
+//   meuRestaurante.order('coxinha') // Retorno: undefined
+
+//   meuRestaurante.consumption // Retorno: ['coxinha']
+
+//   meuRestaurante.pay() // Retorno: 3.9
+
+const consumption = [];
+
+const createMenu = (object) => ({
+  fetchMenu: () => object,
+  consumption,
+  order: (string) => consumption.push(string),
+  pay: () => {
+    let sum = 0;
+    const { food, drink } = object;
+    for (let index = 0; index < consumption.length; index += 1) {
+      if (object.hasOwnProperty.call(food, consumption[index])) {
+        sum += object.food[consumption[index]];
+      } else if (object.hasOwnProperty.call(drink, consumption[index])) {
+        sum += object.drink[consumption[index]];
+      }
+    }
+    let total = sum + sum * 0.1;
+    return Number(total.toFixed(2));
+  },
+});
+
+const object = createMenu({
+  food: { coxinha: 3.9, sopa: 9.9 },
+  drink: { agua: 3.9, cerveja: 6.9 },
+});
+
+const assert = require('assert');
 
 module.exports = createMenu;
