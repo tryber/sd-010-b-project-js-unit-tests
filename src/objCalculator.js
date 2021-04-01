@@ -19,6 +19,12 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
+// Referência: https://stackoverflow.com/questions/45573277/react-expected-an-assignment-or-function-call-and-instead-saw-an-expression
+const calculator = {
+  add(int1, int2) { return Math.round(int1 + int2); },
+  mult(int1, int2) { return Math.round(int1 * int2); },
+  div(int1, int2) { return Math.floor(int1 / int2); },
+  sub(int1, int2) { return Math.round(int1 - int2); },
+};
 
 module.exports = calculator;
