@@ -12,6 +12,12 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+const average = (props) => {
+  if (!props || props.length === 0) return undefined;
+  const total = props.reduce((acumulador, valorAtual) => acumulador + valorAtual);
+  return typeof total === 'number'
+    ? Math.round(total / props.length)
+    : undefined;
+};
 
 module.exports = average;
