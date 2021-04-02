@@ -39,4 +39,11 @@ const productDetails = (firstProduct, secondProduct) => [
   },
 ];
 
+// console.log(productDetails('A', 'M')[0].details.productId.endsWith('123'));
+let teste;
+if (productDetails('A', 'B')[0] === productDetails('A', 'B')[1]) teste = true;
+else teste = false;
+
+console.log(teste);
+
 module.exports = productDetails;
