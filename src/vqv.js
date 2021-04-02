@@ -15,7 +15,14 @@
       trabalho na Trybe e mando muito em programação!
       #VQV!'
 */
-
-const vqv = (nome, idade) => {};
+// Só consegui resolver os erros no template literals com a ajuda do meu colega Alexandre Damasceno.  Link do PR:https://github.com/tryber/sd-010-b-project-js-unit-tests/pull/132/commits/4bee3d037361e7b219ca71e6a636e8fa9bf03966
+const vqv = (nome, idade) => {
+  if (typeof (nome) !== 'string' || typeof (idade) !== 'number') {
+    return undefined;
+  }
+  const workMessage = 'trabalho na Trybe e mando muito em programação!\n';
+  let joinSentences = `Oi, meu nome é ${nome}!\nTenho ${idade} anos,\n${workMessage}#VQV!`;
+  return joinSentences;
+};
 
 module.exports = vqv;

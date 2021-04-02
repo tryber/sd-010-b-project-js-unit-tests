@@ -15,6 +15,14 @@
     estudante.feedback() // Retorna: 'Eita pessoa boa!'
 */
 
-const createStudent = () => {};
+const createStudent = (name) => ({
+
+  name, // o Lint apontava erro toda vez que eu não deixava somente "name"
+  feedback() {
+    let sentence = 'Eita pessoa boa!';
+    return sentence;
+  }, // da forma que eu tentava fazer arrow function aqui, o LINT dava muitos erros. Tive que ir apagando muita coisa até ficar dessa forma e não dar mais erro no lint
+
+});
 
 module.exports = createStudent;

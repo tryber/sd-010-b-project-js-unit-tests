@@ -19,6 +19,20 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
+const calculator = {
+  add(numberOne, numberTwo) {
+    return numberOne + numberTwo;
+  },
+  mult(numberOne, numberTwo) {
+    return numberOne * numberTwo;
+  },
+  div(numberOne, numberTwo) {
+    let division = numberOne / numberTwo;
+    return Math.floor(division); // propriedade que arredonda o número pra baixo
+  },
+  sub(numberOne, numberTwo) {
+    return numberOne - numberTwo;
+  },
+};
 
 module.exports = calculator;
