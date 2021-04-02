@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "pkief.material-icon-theme",
+    "formulahendry.code-runner",
+    "esbenp.prettier-vscode",
+    "visualstudioexptteam.vscodeintellicode"
+  ]
+}
