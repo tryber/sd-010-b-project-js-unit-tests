@@ -16,6 +16,18 @@
       #VQV!'
 */
 
-const vqv = (nome, idade) => {};
-
+const vqv = (nome, idade) => {
+  if (nome === undefined || idade === undefined) {
+    return undefined;
+  }
+  // return `Oi, meu nome é ${nome}!
+  // Tenho ${idade} anos,
+  // trabalho na Trybe e mando muito em programação!
+  // #VQV!`;   Questionável não passar no lint desta forma pois esse foi o jeito ensinado seguindo as diretrizes do ES6, que são as recomendadas.
+  return `Oi, meu nome é ${nome}!\n`
+  + `Tenho ${idade} anos,\n`
+  + 'trabalho na Trybe e mando muito em programação!\n'
+  + '#VQV!';
+};
+// console.log(vqv('Tunico', 30));
 module.exports = vqv;
