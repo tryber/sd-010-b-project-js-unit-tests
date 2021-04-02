@@ -72,13 +72,57 @@
 // // Essa função deve ser associada à chave `order` de `restaurant`
 // ```
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
-
 //------------------------------------------------------------------------------------------
 
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`,
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
+let menu = {};
 
-const createMenu = () => {};
+const adicionaOrder = (parametro) => menu.consumption.push(parametro);
+
+const adicionarPay = (cardapio) => {
+  let comidas = menu.consumption;
+  let foodCardapio = Object.keys(cardapio.food);
+  let drinkCardapio = Object.keys(cardapio.drink);
+  let foodCardapioValues = Object.values(cardapio.food);
+  let drinkCardapioValues = Object.values(cardapio.drink);
+  let valores = [];
+  for (let i = 0; i < comidas.length; i += 1) {
+    for (let index = 0; index < foodCardapio.length; index += 1) {
+      if (comidas[i] === foodCardapio[index]) {
+        valores.push(foodCardapioValues[index]);
+      }
+    }
+  }
+  for (let i = 0; i < comidas.length; i += 1) {
+    for (let index = 0; index < drinkCardapio.length; index += 1) {
+      if (comidas[i] === drinkCardapio[index]) {
+        valores.push(drinkCardapioValues[index]);
+      }
+    }
+  }
+  let precoFinal = 0;
+  for (let j = 0; j < valores.length; j += 1) {
+    precoFinal += valores[j] * 1.1;
+  }
+  return precoFinal;
+};
+
+const createMenu = (pedido) => {
+  menu = {
+    fecthMenu: () => (pedido),
+    consumption: [],
+    order: (adicionaOrder),
+    pay: () => adicionarPay(pedido),
+  };
+  return menu;
+};
+
+// const meuRestaurante = createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9} });
+const objetoRetornado = createMenu({ food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } });
+menu.order('agua');
+menu.order('coxinha');
+console.log(menu.pay());
 
 module.exports = createMenu;

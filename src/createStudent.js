@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /*
   Dada uma função chamada createStudent que recebe como parâmetro um nome,
   retorne um objeto que contenha duas chaves:
@@ -15,6 +16,12 @@
     estudante.feedback() // Retorna: 'Eita pessoa boa!'
 */
 
-const createStudent = () => {};
+const createStudent = (nome) => {
+  const info = {
+    name: nome,
+    feedback: () => 'Eita pessoa boa!',
+  };
+  return info;
+};
 
 module.exports = createStudent;
