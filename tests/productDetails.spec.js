@@ -33,12 +33,15 @@ const productDetails = require('../src/productDetails');
 
 describe('#productDetails', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
-    // ESCREVA SEUS TESTES ABAIXO:
-    // Teste que o retorno da função é um array.
-    // Teste que o array retornado pela função contém dois itens dentro.
-    // Teste que os dois itens dentro do array retornado pela função são objetos.
-    // Teste que os dois objetos são diferentes entre si.
-    // (Difícil) Teste que os dois productIds terminam com 123.
+    assert.strictEqual(Array.isArray(productDetails('batata', 'cenoura')), true);
+    assert.strictEqual(productDetails('batata', 'cenoura').length, 2);
+    const products = productDetails('refri', 'cerveja');
+    assert.strictEqual(typeof products[1], 'object');
+    assert.strictEqual(typeof products[0], 'object');
+    assert.notStrictEqual(products[0], products[1]);
+    /* ultima parte desse request resolvida com o auxílio do código do meu colega Guilherme Lima, da Turma 10-b, para entender melhor o uso do details.productId. E da leitura da documentação da função endsWith no src: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith */
+    const product1 = products[0].details.productId.endsWith('123');
+    const product2 = products[1].details.productId.endsWith('123');
+    assert.deepStrictEqual([product1, product2], [true, true]);
   });
 });
