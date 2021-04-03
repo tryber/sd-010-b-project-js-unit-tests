@@ -40,3 +40,5 @@ const productDetails = (firstProduct, secondProduct) => [
 ];
 
 module.exports = productDetails;
+
+// Créditos para Rafael Mathias, que me ajudou na resolução desse requisito.

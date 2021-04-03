@@ -21,3 +21,4 @@ describe('#myCounter', () => {
     assert.deepStrictEqual(myCounter(), expectedOutput);
   });
 });
+// Créditos para Rafael Mathias e Renan Braga, que estiveram comigo desse requisito.

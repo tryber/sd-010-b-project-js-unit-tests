@@ -78,7 +78,30 @@
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`,
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
+const restaurant = {};
+const orderFromMenu = (request) => { restaurant.consumption.push(request); };
+const payment = (param) => {
+  const consump = restaurant.consumption;
+  let result = 0;
+  for (let index = 0; index < consump.length; index += 1) {
+    if (Object.hasOwnProperty.call(param.food, consump[index])) {
+      result += param.food[consump[index]];
+    }
+    if (Object.hasOwnProperty.call(param.drink, consump[index])) {
+      result += param.drink[consump[index]];
+    }
+  }
+  return result * 1.1;
+};
 
-const createMenu = () => {};
+const createMenu = (element) => {
+  restaurant.fetchMenu = () => element;
+  restaurant.consumption = [];
+  restaurant.order = orderFromMenu;
+  restaurant.pay = () => payment(element);
+  return restaurant;
+};
 
 module.exports = createMenu;
+
+// Créditos para Henriqui Zózimo, que meu deu um norte a seguir nesse requisito, e que mostrou o método Object.hasOwnProperty.call que me ajudou bastante pra a resolução desse requisito.
