@@ -12,6 +12,31 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+//  VQV
+
+const checkArray = (array) => {
+  let item = true;
+  let size = true;
+  for (let i = 0; i < array.length; i += 1) {
+    if (typeof array[i] !== 'number') {
+      item = false;
+      break;
+    }
+  }
+  if (array.length === 0) size = false;
+
+  return item && size;
+};
+
+const average = (array) => {
+  if (checkArray(array)) {
+    let sum = 0;
+    for (let i = 0; i < array.length; i += 1) {
+      sum += array[i];
+    }
+    return Math.round(sum / array.length);
+  }
+  return undefined;
+};
 
 module.exports = average;
