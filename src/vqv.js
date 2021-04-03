@@ -16,6 +16,20 @@
       #VQV!'
 */
 
-const vqv = (nome, idade) => {};
+const vqv = (nome, idade) => {
+  if (!nome || !idade) return undefined;
+  let nameMsg = `Oi, meu nome é ${nome}!\n`;
+  let ageMsg = `Tenho ${idade} anos,\n`;
+  let restOfMsg = 'trabalho na Trybe e mando muito em programação!\n#VQV!';
+  const message = (nameMsg + ageMsg + restOfMsg);
+
+  return message;
+};
+
+/*
+console.log(vqv('Aladino Borges', 29));
+console.log((vqv()));
+console.log((vqv('', 30)));
+*/
 
 module.exports = vqv;

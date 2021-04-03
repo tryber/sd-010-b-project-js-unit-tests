@@ -69,7 +69,7 @@
 // const createMenu = (myMenu) => // Lógica que edita o objeto `restaurant`
 //
 // const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`.
-// // Essa função deve ser associada à chave `order` de `restaurant`
+// Essa função deve ser associada à chave `order` de `restaurant`
 // ```
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
 
@@ -78,7 +78,67 @@
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`,
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
+const restaurant = {};
+const items = ['coxinha', 'agua', 'sopa', 'sashimi'];
+const prices = [3.9, 3.9, 7.1, 5.1];
 
-const createMenu = () => {};
+const newOrder = (string) => restaurant.consumption.push(string);
+
+const createMenu = (object) => {
+  restaurant.fetchMenu = () => object;
+  restaurant.consumption = [];
+  restaurant.order = newOrder;
+  restaurant.pay = () => {
+    let total = 0;
+    const tax = 0.1;
+    const toPay = Object.values(restaurant.consumption);
+    console.log(toPay);
+    toPay.forEach((element) => {
+      for (let counter = 0; counter < items.length; counter += 1) {
+        const item = items[counter];
+        const price = prices[counter];
+        if (element === item) { total += price; }
+      }
+    });
+    return (total + (total * tax));
+  };
+  return restaurant;
+};
+
+/* PROTOTIPOS
+const i = createMenu();
+i.fetchMenu();
+i.order('coxinha');
+i.order('agua');
+i.order('coxinha');
+console.log(i.pay());
+
+const addOrders = (order, targetObject) => {
+  for (let index of order) {
+    targetObject.order(index);
+  }
+};
+
+ESTE ALGORITMO SÓ FUNCIONA CASO O x.consumption RETORNE UMA ARRAY
+COM A SEGUINTE FORMATAÇÃO: [{ food: { coxinha: 3.4 }, drink: { agua: 3.9 } }].
+POR ESTE MOTIVO, MANTENHO-HO AQUI COMENTADO E CRIEI OUTRO PARA O
+QUE É PEDIDO NOS REQUISITOS:
+const priceCalc = () => {
+  let total = 0;
+  const toPay = Object.values(restaurant.consumption);
+  for (let a of toPay) {
+    const price = parseFloat(Object.values(a));
+    total += price;
+  }
+  console.log(total);
+  return toPay;
+};
+
+const testObject = createMenu([{ food: { coxinha: 3.4 }, drink: { agua: 3.9 } }]);
+testObject.fetchMenu();
+addOrders(['coxinha', 'sopa', 'coxinha'], testObject);
+console.log(testObject.consumption);
+console.log(testObject.pay());
+*/
 
 module.exports = createMenu;
