@@ -70,6 +70,26 @@
 //
 // const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`.
 // // Essa função deve ser associada à chave `order` de `restaurant`
+
+// Define o objeto que a `createMenu()` retorna, mas separadamente
+const restaurant = {
+  consumption: [],
+};
+
+// Definir a função `createMenu()` que, dado um objeto passado por parâmetro, retorna um objeto com o seguinte formato: { fetchMenu: () => objetoPassadoPorParametro }
+const createMenu = (obj) => {
+  restaurant.fetchMenu = () => obj;
+  return restaurant;
+};
+
+// Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`.
+const orderFromMenu = (request) => {
+  restaurant.consumption.push(request);
+};
+
+// Essa função deve ser associada à chave `order` de `restaurant`
+restaurant.order = orderFromMenu;
+
 // ```
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
 
@@ -79,6 +99,25 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// Função que varre todo os itens de `objetoRetornado.consumption`,
+// soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%.
+const total2Pay = () => {
+  let somaDosPrecosDosPedidos = 0;
+  const menu = restaurant.fetchMenu();
+  for (const order of restaurant.consumption) {
+    if (menu.food[order]) {
+      somaDosPrecosDosPedidos += menu.food[order];
+    } else if (menu.drinks[order]) {
+      somaDosPrecosDosPedidos += menu.drinks[order];
+    }
+  }
+
+  somaDosPrecosDosPedidos *= 1.1;
+
+  return somaDosPrecosDosPedidos;
+};
+
+// Essa função deve ser associada à chave `pay` de `restaurant`
+restaurant.pay = total2Pay;
 
 module.exports = createMenu;

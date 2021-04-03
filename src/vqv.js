@@ -16,6 +16,26 @@
       #VQV!'
 */
 
-const vqv = (nome, idade) => {};
+/*
+  Essa função verifica se uma variável foi definida
+ */
+const isDefinedVariable = (variable) => variable !== undefined;
+
+/*
+  Material consultado sobre arguments.length
+  https://www.w3schools.com/js/js_function_parameters.asp
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/length
+ */
+const vqv = (nome, idade) => {
+  // verifica se os parametros foram definidos
+  if (isDefinedVariable(nome) && isDefinedVariable(idade)) {
+    // retorna frase pre-definida como requisito
+    return `Oi, meu nome é ${nome}!
+Tenho ${idade} anos,
+trabalho na Trybe e mando muito em programação!
+#VQV!`;
+  }
+  return undefined; // retorna undefined caso algum parametro não foi definido
+};
 
 module.exports = vqv;

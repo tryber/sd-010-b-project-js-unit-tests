@@ -25,13 +25,47 @@ const circle = require('../src/circle');
 
 describe('#circle', () => {
   it('given a radius, should return an object with circles info', () => {
-    assert.fail();
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste se circle retorna um objeto.
+    assert.deepStrictEqual(typeof circle(1), 'object');
+
     // Teste se o objeto retornado tem 3 entradas.
+    assert.deepStrictEqual(Object.entries(circle(7)).length, 3);
+
     // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
+    assert.deepStrictEqual(circle(), undefined);
+
+    /**
+     * Usa a função toFixed para definir 2 casas decimais para PI
+     * Material consultado sobre toFixed()
+     * https://www.w3schools.com/jsref/jsref_tofixed.asp
+     */
     // Teste que a função retorna, dentro de um objeto, a circunferência correta para um círculo de raio 2.
+    assert.strictEqual(circle(2).circumference, (2 * Math.PI.toFixed(2) * 2));
+
     // Teste que a função retorna, dentro de um objeto, a área correta para um círculo de raio 3.
+    assert.strictEqual(circle(3).area, (Math.PI.toFixed(2) * 3 * 3));
+
+    /**
+     * Usa a função Object para construir um objeto
+     *
+     * Material consultado sobre como criar Object
+     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
+     *
+     * Material consultado sobre deepStrictEqual
+     * https://nodejs.org/api/assert.html#assert_assert_deepstrictequal_actual_expected_message
+     * https://www.w3schools.com/nodejs/met_assert_deepstrictequal.asp
+     */
     // Teste que a função retorna, num objeto, os dados corretos de um círculo de raio 3.
+    assert.deepStrictEqual(circle(3),
+      Object({
+        radius: 3,
+        area: (Math.PI.toFixed(2) * 3 * 3),
+        circumference: (2 * Math.PI.toFixed(2) * 3),
+      }));
+    /**
+     * não funcionou. pq?
+     * assert.deepStrictEqual(circle(3), () => ({ radius: 3, area: (Math.PI.toFixed(2) * 3 * 3), circumference: (2 * Math.PI.toFixed(2) * 3) }));
+     */
   });
 });
