@@ -52,7 +52,6 @@ const createMenu = require('../src/restaurant');
 
 describe('#createMenu', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
     // TESTE 1: Verifique se o retorno da função createMenu() é um objeto que possui,
     // mas não é necessariamente é limitado à chave `fetchMenu`, a qual tem como valor uma função.
     // ```
@@ -114,5 +113,20 @@ describe('#createMenu', () => {
     // objetoRetornado.pay() // Retorno: somaDosPreçosDosPedidos
     // ```
     // Agora faça o PASSO 4 no arquivo `src/restaurant.js`.
+
+    const testMenu = { food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } };
+    const meuRestaurante = createMenu(testMenu);
+
+    let obj;
+    let objetoRetornado;
+
+    assert.strictEqual(typeof createMenu(), 'object');
+    obj = { food: {}, drink: {} };
+    objetoRetornado = createMenu(obj);
+    assert.strictEqual(objetoRetornado.fetchMenu, obj);
+    assert.strictEqual(objetoRetornado.fetchMenu === obj, true);
+    assert.strictEqual(objetoRetornado.consumption, []);
+    objetoRetornado.order('coxinha');
+    assert.strictEqual(objetoRetornado.consumption, ['coxinha']);
   });
 });
