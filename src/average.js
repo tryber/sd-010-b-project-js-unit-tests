@@ -14,8 +14,7 @@
 
 const average = (arrayNumbers) => {
   // Caso a função receba um array vazio, o valor undefined deve ser retornado.
-  if (arrayNumbers.length === 0)
-    return undefined;
+  if (arrayNumbers.length === 0) return undefined;
   // Caso a função receba algum valor não númerico, o valor undefined deve ser retornado.
   let values = 0;
   for (let index = 0; index < arrayNumbers.length; index += 1) {
