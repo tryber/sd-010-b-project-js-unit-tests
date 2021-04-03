@@ -16,6 +16,14 @@
       #VQV!'
 */
 
-const vqv = (nome, idade) => {};
-
+const vqv = (nome, idade) => {
+  // Caso a função seja chamada sem nenhum parâmetro, o valor undefined deve ser retornado.
+  if (!nome && !idade) return undefined;
+  // template literals
+  return `Oi, meu nome é ${nome}!
+Tenho ${idade} anos,
+trabalho na Trybe e mando muito em programação!
+#VQV!`;
+};
+// console.log(vqv('Hamaji', 29))
 module.exports = vqv;

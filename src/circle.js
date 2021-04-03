@@ -28,4 +28,8 @@ const circle = (radius) => {
   };
 };
 
+// console.log(circle(2)) = { radius: 2, area: 12.56, circumference: 12.56 };
+
+// console.log(circle(3)) = { radius: 3, area: 28.259999999999998, circumference: 18.84 };
+
 module.exports = circle;
