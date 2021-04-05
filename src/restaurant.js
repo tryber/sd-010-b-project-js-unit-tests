@@ -104,6 +104,7 @@ const restaurant = createMenu(menu);
 // console.log(typeof createMenu());
 // console.log(createMenu(menu));
 console.log(restaurant.fetchMenu());
-console.log(Object.keys(restaurant.fetchMenu()));
+const keys = Object.keys(restaurant.fetchMenu());
+console.log(keys);
 
 module.exports = createMenu;
