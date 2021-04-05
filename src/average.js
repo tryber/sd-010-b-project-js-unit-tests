@@ -12,6 +12,16 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+// https://medium.com/aprendajs/10-javascript-array-m%C3%A9todos-que-voc%C3%AA-deveria-saber-789ea95667d0
+// Referencia usada para realização
+
+const average = ((array) => {
+  let retorno;
+  if ((array.length !== 0) && (array.every((num) => typeof num === 'number'))) {
+    retorno = array.reduce((total, value) => total + value, 0);
+    retorno = (retorno === 1) ? 0 : Math.round(retorno /= array.length);
+  }
+  return retorno;
+});
 
 module.exports = average;
