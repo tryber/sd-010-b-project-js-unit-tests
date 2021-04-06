@@ -57,8 +57,7 @@
 
 //------------------------------------------------------------------------------------------
 
-// PASSO 3: Crie uma função, separada da função `createMenu()`, que, dada uma string recebida por parâmetro,
-// adiciona essa string ao array de `objetoRetornado.consumption`. Adicione essa função à chave `order`.
+// PASSO 3: Crie uma função, separada da função `createMenu()`, que, dada uma string recebida por parâmetro,adiciona essa string ao array de `objetoRetornado.consumption`. Adicione essa função à chave `order`.
 // DICA: para criar isso, você pode:
 // - Definir a função `createMenu()`
 // - Definir o objeto que a `createMenu()` retorna, mas separadamente
@@ -79,6 +78,39 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+let restaurant = {};
+
+const orderFromMenu = (request) => restaurant.consuption.push(request);
+function calculatePayment() {
+  const orders = restaurant.consuption;
+  const menu = restaurant.fetchMenu();
+  const foodsNames = Object.keys(menu.food);
+  const drinkNames = Object.keys(menu.drink);
+  const foodsPrices = Object.values(menu.food);
+  const drinkPrices = Object.values(menu.drink);
+  const foodNamesAndPrices = foodsNames.map((food, index) =>
+    ({ name: food, value: foodsPrices[index] }));
+  const drinkNamesAndPrices = drinkNames.map((drink, index) =>
+    ({ name: drink, value: drinkPrices[index] }));
+  let total = 0;
+  orders.forEach((order) => {
+    let rightItem = foodNamesAndPrices.find((food) => food.name === order);
+    rightItem = rightItem === undefined ? drinkNamesAndPrices.find((drink) =>
+      drink.name === order) : rightItem;
+    total += rightItem.value;
+  });
+  total *= 1.1;
+  total = Math.round(total);
+  return total;
+}
+
+function createMenu(menu) {
+  restaurant = { fetchMenu: () => menu,
+    consuption: [],
+    order: (string) => orderFromMenu(string),
+    pay: () => calculatePayment(),
+  };
+  return restaurant;
+}
 
 module.exports = createMenu;

@@ -33,12 +33,27 @@ const productDetails = require('../src/productDetails');
 
 describe('#productDetails', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
+    const callTest = productDetails('produto1', 'produto2');
+    const product1Id = callTest[0].details.productId;
+    const product2Id = callTest[1].details.productId;
+    const returnLast3Digits = (arr) => {
+      let lastDigits = [];
+      for (let i = 3; i > 0; i -= 1) {
+        lastDigits.push(arr[arr.length - i]);
+      }
+      return lastDigits;
+    };
+    const product1IdEnding = returnLast3Digits(product1Id);
+    const product2IdEnding = returnLast3Digits(product2Id);
+
     // ESCREVA SEUS TESTES ABAIXO:
-    // Teste que o retorno da função é um array.
-    // Teste que o array retornado pela função contém dois itens dentro.
-    // Teste que os dois itens dentro do array retornado pela função são objetos.
-    // Teste que os dois objetos são diferentes entre si.
-    // (Difícil) Teste que os dois productIds terminam com 123.
+    // Utilizei o Array.isArray depois de consulta o site TutorialRepublic
+    assert.strictEqual(Array.isArray(callTest), true);
+    assert.deepStrictEqual(callTest.length, 2);
+    assert.strictEqual(typeof callTest[0], 'object');
+    assert.strictEqual(typeof callTest[1], 'object');
+    assert.notStrictEqual(callTest[0], callTest[1]);
+    assert.deepStrictEqual(product1IdEnding, ['1', '2', '3']);
+    assert.deepStrictEqual(product2IdEnding, ['1', '2', '3']);
   });
 });
