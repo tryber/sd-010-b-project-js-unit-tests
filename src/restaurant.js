@@ -93,18 +93,15 @@ const menu = {
 const createMenu = (menuList) => {
   const keys = {
     fetchMenu: () => menuList,
-    // consum
+    consumption: [],
+    order: (ordered) => keys.consumption.push(ordered),
   };
 
   return keys;
 };
 
 const restaurant = createMenu(menu);
-
-// console.log(typeof createMenu());
-// console.log(createMenu(menu));
-console.log(restaurant.fetchMenu());
-const keys = Object.keys(restaurant.fetchMenu());
-console.log(keys);
+restaurant.order('coxinha');
+console.log(restaurant.consumption);
 
 module.exports = createMenu;
