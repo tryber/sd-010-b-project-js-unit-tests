@@ -20,11 +20,16 @@
 
 const circle = (radius) => {
   const PI = 3.14;
-  if (!radius) { return undefined; }
+
+  const precise = (number) => parseFloat((number).toPrecision(4));
+
+  if (!radius) {
+    return undefined;
+  }
   return {
     radius,
-    area: PI * radius * radius,
-    circumference: 2 * PI * radius,
+    area: precise(PI * radius * radius),
+    circumference: precise(2 * PI * radius),
   };
 };
 
