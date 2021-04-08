@@ -106,6 +106,7 @@ create.order("coxinha");
 create.order("agua");
 create.order("sopa");
 create.order("sashimi");
+create.order("coxinha");
 console.log(restaurant.consumption);
 
 module.exports = createMenu;
