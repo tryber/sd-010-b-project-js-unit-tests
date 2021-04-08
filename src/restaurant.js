@@ -90,18 +90,22 @@ const menu = {
   },
 };
 
-const createMenu = (menuList) => {
-  const keys = {
-    fetchMenu: () => menuList,
-    consumption: [],
-    order: (ordered) => keys.consumption.push(ordered),
-  };
+const restaurant = {};
+const itemOrdered = (ordered) => restaurant.consumption.push(ordered);
 
-  return keys;
+const createMenu = (menuList) => {
+  restaurant.fetchMenu = () => menuList;
+  restaurant.consumption = [];
+  restaurant.order = itemOrdered;
+
+  return restaurant;
 };
 
-const restaurant = createMenu(menu);
-restaurant.order('coxinha');
+const create = createMenu(menu);
+create.order("coxinha");
+create.order("agua");
+create.order("sopa");
+create.order("sashimi");
 console.log(restaurant.consumption);
 
 module.exports = createMenu;
