@@ -12,6 +12,20 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+const average = (arei) => {
+  let soma = 0;
+  let avaliacao = 0;
+  for (var i = 0; i < arei.length; i += 1) {
+    soma += arei[i];
+    var soTemNumero = soma / arei.length;
+    if (typeof arei[i] === 'number') {
+      avaliacao += 1;
+    }
+  }
+  if (avaliacao === arei.length && avaliacao !== 0) {
+    return Math.round(soTemNumero);
+  }
+  return undefined;
+};
 
 module.exports = average;
