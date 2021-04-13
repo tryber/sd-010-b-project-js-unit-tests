@@ -28,4 +28,10 @@ const circle = (radius) => {
   };
 };
 
+const response = circle(7);
+
+console.log(`Tipo de retorno: ${typeof (response)}`);
+console.log(`Número de chaves: ${Object.keys(response)}`);
+console.table(response);
+
 module.exports = circle;
