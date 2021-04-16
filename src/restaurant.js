@@ -79,6 +79,36 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+const mantovaniRestaurant = {};
+
+const menuOrder = (request) => mantovaniRestaurant.consumption.push(request);
+
+const pagar = (menu) => {
+  const comes = menu.food;
+  const bebes = menu.drink;
+  const consumo = mantovaniRestaurant.consumption;
+  let divida = 0;
+  for (let i = 0; i < consumo.length; i += 1) {
+    if (Object.hasOwnProperty.call(comes, consumo[i])) {
+      divida += comes[consumo[i]];
+    }
+    if (Object.hasOwnProperty.call(bebes, consumo[i])) {
+      divida += bebes[consumo[i]];
+    }
+  }
+  divida *= 1.1;
+  divida = parseFloat(divida.toFixed(2));
+  return divida;
+};
+
+const createMenu = (obj1) => {
+  mantovaniRestaurant.fetchMenu = () => obj1;
+  mantovaniRestaurant.consumption = [];
+  mantovaniRestaurant.order = menuOrder;
+  mantovaniRestaurant.pay = () => pagar(obj1);
+  return mantovaniRestaurant;
+};
 
 module.exports = createMenu;
+
+// finalizado com entendimento ao ler o pull request do colega henrique-zozimo para sanar algumas dúvidas e em busca de luz e sabedoria! https://github.com/tryber/sd-010-b-project-js-unit-tests/pull/103
