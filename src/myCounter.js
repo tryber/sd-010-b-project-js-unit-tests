@@ -12,12 +12,14 @@
 
 const myCounter = () => {
   var myArray = [];
-  for (var counter = 0; counter <= 3; counter += 1) {
-    myArray.push(counter);
+  let count = 0;
+  do {
+    myArray.push(count);
     for (var counter = 2; counter <= 3; counter += 1) {
       myArray.push(counter);
     }
-  }
+    count += 1;
+  } while (count < 4);
   return myArray;
 };
 
