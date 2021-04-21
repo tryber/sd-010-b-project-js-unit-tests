@@ -1,9 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-
-const { test } = require('@jest/globals');
 const assert = require('assert');
-const { object } = require('webidl-conversions');
 const circle = require('../src/circle');
 
 /*
