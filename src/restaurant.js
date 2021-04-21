@@ -78,33 +78,32 @@
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`,
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
-let restaurant;
-const createMenu = (menu) => {
-  restaurant = { consumption: [] };
+const meuRestaurante = {};
 
-  restaurant.fetchMenu = () => menu;
-  restaurant.consumption = [];
-  restaurant.order = (o) => restaurant.consumption.push(o);
+const request = (pedido) => meuRestaurante.consumption.push(pedido);
 
-  return restaurant;
-};
-
-let menu = { food: { coxinha: 3.9, sopa: 9.9 }, drink: { agua: 3.9, cerveja: 6.9 } };
-const meuRestaurante = createMenu(menu);
-const payment = (orderItems) => {
-  let totalPayment = 0;
-  menu = meuRestaurante.fetchMenu();
-  for (let index = 0; index < orderItems.length; index += 1) {
-    if (menu.food[orderItems[index]]) {
-      totalPayment += menu.food[orderItems[index]];
+const pagamento = (menu) => {
+  const comida = menu.food;
+  const bebida = menu.drink;
+  const consumo = meuRestaurante.consumption;
+  let total = 0;
+  for (let item = 0; item < consumo.length; item += 1) {
+    if (Object.hasOwnProperty.call(comida, consumo[item])) {
+      total += comida[consumo[item]];
     }
-    if (menu.drink[orderItems[index]]) {
-      totalPayment += menu.drink[orderItems[index]];
+    if (Object.hasOwnProperty.call(bebida, consumo[item])) {
+      total += bebida[consumo[item]];
     }
   }
-  return totalPayment.toFixed(2);
+  return total * 1.1;
 };
 
-restaurant.pay = () => payment(restaurant.consumption);
+const createMenu = (objeto) => {
+  meuRestaurante.fetchMenu = () => objeto;
+  meuRestaurante.consumption = [];
+  meuRestaurante.order = request;
+  meuRestaurante.pay = () => pagamento(objeto);
+  return meuRestaurante;
+};
 
 module.exports = createMenu;
