@@ -18,7 +18,7 @@
 const createStudent = (nameStudent) => {
   let result = {
     name: `${nameStudent}`,
-    feedbback: () => 'Eita pessoa boa!',
+    feedbback: () => ('Eita pessoa boa!'),
   };
   return result;
 };
