@@ -42,10 +42,8 @@ describe('#productDetails', () => {
     // Teste que os dois itens dentro do array retornado pela função são objetos.
     assert.deepStrictEqual(products.every((el) => typeof (el) === 'object'), true);
     // Teste que os dois objetos são diferentes entre si.
-    assert.nostrictEqual(products[0], products[1], true);
+    assert.strictEqual(products[0] !== products[1], true);
     // (Difícil) Teste que os dois productIds terminam com 123.
-    let param1 = products[0].details.productId.endsWith('123');
-    let param2 = products[1].details.productId.endsWith('123');
-    assert.deepStrictEqual([param1, param2], [true, true]);
+    assert.strictEqual(products.every((el) => el.details.productId.endsWith('123')), true);
   });
 });
