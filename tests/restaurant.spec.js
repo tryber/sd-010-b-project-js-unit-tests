@@ -105,11 +105,11 @@ describe('#createMenu', () => {
     // TESTE 6: Verifique que as três orders seguintes, de bebidas e comidas mescladas, somam três itens no array `objetoRetornado.consumption` conforme os itens pedidos.
     // ```
     const ordering2 = createMenu(menuList);
-    ordering2.order("coxinha");
-    ordering2.order("agua");
-    ordering2.order("sopa");
-    ordering2.order("sashimi");
-    assert.deepStrictEqual(ordering2.consumption, ["coxinha", "agua", "sopa", "sashimi"]);
+    ordering2.order('coxinha');
+    ordering2.order('agua');
+    ordering2.order('sopa');
+    ordering2.order('sashimi');
+    assert.deepStrictEqual(ordering2.consumption, ['coxinha', 'agua', 'sopa', 'sashimi']);
     // objetoRetornado.consumption // Retorno: ["coxinha", "agua", "sopa", "sashimi"]
     // ```
     // Agora faça o TESTE 7 deste arquivo.
@@ -127,9 +127,12 @@ describe('#createMenu', () => {
     // --------------------------------------------------------------------------------------
     // TESTE 8: Verifique que, ao chamar `objetoRetornado.pay()`, retorna-se a soma dos preços de tudo que foi pedido, conforme registrado em `objetoRetornado.consumption`
     // ```
-    // objetoRetornado.order('coxinha');
-    // objetoRetornado.order('agua');
-    // objetoRetornado.order('coxinha');
+    const payBill = createMenu(menuList);
+    payBill.order('coxinha');
+    payBill.order('agua');
+    payBill.order('coxinha');
+    const sumOfOrderPrices = 12.87;
+    assert.strictEqual(payBill.pay(), sumOfOrderPrices);
     // objetoRetornado.pay() // Retorno: somaDosPreçosDosPedidos
     // ```
     // Agora faça o PASSO 4 no arquivo `src/restaurant.js`.
