@@ -11,7 +11,15 @@
     - average([1, 1]) // Retorno: 1;
     - average([1, '2']) // Retorno: undefined;
 */
-
-const average = () => {};
+// Emerson Saturnino ajudou
+const average = (array) => {
+  if (!array || array.length === 0) {
+    return undefined;
+  }
+  const resultado = array.reduce((numInicial, total) => numInicial + total, 0);
+  return typeof resultado === 'number'
+    ? Math.round(resultado / array.length)
+    : undefined;
+};
 
 module.exports = average;
