@@ -69,7 +69,7 @@
 // const createMenu = (myMenu) => // Lógica que edita o objeto `restaurant`
 //
 // const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`.
-// // Essa função deve ser associada à chave `order` de `restaurant`
+// Essa função deve ser associada à chave `order` de `restaurant`
 // ```
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
 
@@ -78,7 +78,37 @@
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`,
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
+const resturante = {};
 
-const createMenu = () => {};
+const orderFromMenu = (request) => {
+  resturante.consumption.push(request);
+};
+
+const pay = (objetoPassadoPorParametro) => {
+  let total = 0;
+  const foods = objetoPassadoPorParametro.food;
+  const drinks = objetoPassadoPorParametro.drink;
+  const totalconsumption = resturante.consumption;
+  for (let index = 0; index < totalconsumption.length; index += 1) {
+    if (foods[totalconsumption[index]]) {
+      total += foods[totalconsumption[index]];
+    }
+    if (drinks[totalconsumption[index]]) {
+      total += drinks[totalconsumption[index]];
+    }
+  }
+
+  return Number((total * 1.1).toFixed(2));
+};
+const createMenu = (objetoPassadoPorParametro) => {
+  resturante.fetchMenu = () => objetoPassadoPorParametro;
+  // resturante.menu = objetoPassadoPorParametro;
+  resturante.consumption = [];
+  resturante.order = orderFromMenu;
+  resturante.pay = () => pay(objetoPassadoPorParametro);
+  return resturante;
+};
 
 module.exports = createMenu;
+
+// Meus sinceros agradecimentos aos amigos de Trybe e tribo B - Gustavo Cerqueira- Henrique Zózimo - Allan Tanaka - /// Lucas Pedroso-Fernanda Porto.
