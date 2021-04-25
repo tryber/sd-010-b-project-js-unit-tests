@@ -79,6 +79,31 @@
 // soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso,
 // você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+const restaurant = {};
+const itemOrdered = (ordered) => restaurant.consumption.push(ordered);
+
+const bringTheBill = (menuPrices) => {
+  const { food } = menuPrices;
+  const { drink } = menuPrices;
+  const { consumption } = restaurant;
+  let bill = 0;
+  const tenPercent = 1.1;
+
+  for (let i = 0; i < consumption.length; i += 1) { // source: https://github.com/tryber/sd-010-b-project-js-unit-tests/blob/gmcerqueira-js-unit-tests/src/restaurant.js
+    if (food[consumption[i]]) bill += food[consumption[i]]; // food in 'coxinha' key return his value
+    if (drink[consumption[i]]) bill += drink[consumption[i]]; // drink in 'agua' key return his value
+  }
+
+  return parseFloat((bill * tenPercent).toFixed(2));
+};
+
+const createMenu = (menuList) => {
+  restaurant.fetchMenu = () => menuList;
+  restaurant.consumption = [];
+  restaurant.order = itemOrdered;
+  restaurant.pay = () => bringTheBill(menuList);
+
+  return restaurant;
+};
 
 module.exports = createMenu;
